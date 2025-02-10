@@ -1,58 +1,79 @@
-# Cloud Run Hello World with Cloud Code
+# Toy Store Search App
 
-"Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) application that renders a simple webpage.
+## 1. Set up AlloyDB Database
+Follow steps in step 4 in this codelab: https://codelabs.developers.google.com/smart-shop-agent-alloydb#3
+Remember to name the cluster and instance as follows:
+cluster: vector-cluster
+instances: vector-instance
+change the user, password, db_name in your Cloud Run Function application code (in the "get-toys-alloydb" Cloud Run Function) according to what you set in this setup step.
 
-For details on how to use this sample as a template in Cloud Code, read the documentation for Cloud Code for [VS Code](https://cloud.google.com/code/docs/vscode/quickstart-cloud-run?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) or [IntelliJ](https://cloud.google.com/code/docs/intellij/quickstart-cloud-run?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
+### 1. CREATE Script
+CREATE TABLE toys ( id VARCHAR(25), name VARCHAR(25), description VARCHAR(20000), quantity INT, price FLOAT, image_url VARCHAR(200), text_embeddings vector(768)) ;
 
-### Table of Contents
-* [Getting Started with VS Code](#getting-started-with-vs-code)
-* [Getting Started with IntelliJ](#getting-started-with-intellij)
-* [Sign up for User Research](#sign-up-for-user-research)
+### 2. INSERT Script
+INSERT SCRIPTS in the file data.sql in this repo
+
+### 3. Enable Extensions
+CREATE EXTENSION vector;
+CREATE EXTENSION google_ml_integration;
+
+### 4. Grant Permission
+GRANT EXECUTE ON FUNCTION embedding TO postgres;
+
+### 5. Grant Vertex AI User ROLE to the AlloyDB service account
+
+PROJECT_ID=$(gcloud config get-value project)
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:service-$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")@gcp-sa-alloydb.iam.gserviceaccount.com" \
+--role="roles/aiplatform.user"
+
+### 6. Update Text Embeddings
+UPDATE toys set text_embeddings = embedding( 'text-embedding-005', description);
+
+### 7. Vector Search (RAG)
+
+At this point you are ready to test your Nearest Neighbor query results using the embeddings just created from AlloyDB Studio.
+For detailed steps on how to create ScaNN index, refer to this blog: 
+
+    select * from toys
+    ORDER BY text_embeddings <=> CAST(embedding('text-embedding-005', 'white plush teddy bear toy with floral pattern') as vector(768))
+    LIMIT 5;
+
+### 7. ScaNN Index
+
+The ScaNN index is a tree-based quantization index for approximate nearest neighbor search. In Tree-quantization techniques, indexes learn a search tree together with a quantization (or hashing) function. When you run a query, the search tree is used to prune the search space while quantization is used to compress the index size. This pruning speeds up the scoring of the similarity (i.e., distance) between the query vector (user search text vector) and the database vectors. This results in increased efficiency of the nearest neighbor search. Read more about it [here]([url](https://cloud.google.com/alloydb/docs/ai/tune-indexes)).
+
+   Refer to this blog for creating ScaNN index and executing Vector Search on indexed data: https://medium.com/google-cloud/upgrade-your-vector-search-efficiency-and-recall-with-scann-index-9bc8b2018377
+
+## Gemini 2.0 for image based Vector Search
+For this step refer to the callGemini(String base64ImgWithPrefix) of the GeminiCall.java class
+
+## Imagen 3 Implementation
+For this step, refer to the generateImage(String projectId, String location, String prompt) method of the generateToy class
+
+## LangChain4j Integration
+Integration as part of Gemini 2.0 invocation
+
+## Toolbox Integration
+
+Toolbox helps you build Gen AI tools that let your agents access data in your database. Toolbox provides:
+
+Simplified development: Integrate tools to your agent in less than 10 lines of code, reuse tools between multiple agents or frameworks, and deploy new versions of tools more easily.
+Better performance: Best practices such as connection pooling, authentication, and more.
+Enhanced security: Integrated auth for more secure access to your data
+End-to-end observability: Out of the box metrics and tracing with built-in support for OpenTelemetry.
+
+Toolbox sits between your application's orchestration framework and your database, providing a control plane that is used to modify, distribute, or invoke tools. It simplifies the management of your tools by providing you with a centralized location to store and update tools, allowing you to share tools between agents and applications and update those tools without necessarily redeploying your application.
+
+### Toolbox installation and details:
+
+https://github.com/googleapis/genai-toolbox
+[Toolbo](https://pypi.org/project/toolbox-langchain/0.1.0/)
+https://github.com/googleapis/genai-toolbox-langchain-python
+
 
 ---
-## Getting Started with VS Code
+## Serverless Deployment
+gcloud run deploy --source .
 
-### Run the app locally with the Cloud Run Emulator
-1. Click on the Cloud Code status bar and select 'Run on Cloud Run Emulator'.  
-![image](./img/status-bar.png)
-
-2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app#deploying_a_cloud_run_service). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
-![image](./img/build-config.png)
-
-3. Click ‘Run’. Cloud Code begins building your image.
-
-4. View the build progress in the OUTPUT window. Once the build has finished, click on the URL in the OUTPUT window to view your live application.  
-![image](./img/cloud-run-url.png)
-
-5. To stop the application, click the stop icon on the Debug Toolbar.
-
----
-## Getting Started with IntelliJ
-
-### Run the app locally with the Cloud Run Emulator
-
-#### Define run configuration
-
-1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'.  
-![image](./img/edit-config.png)
-
-2. Select 'Cloud Run: Run Locally' and specify your [builder option](https://cloud.google.com/code/docs/intellij/developing-a-cloud-run-app#defining_your_run_configuration). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
-![image](./img/local-build-config.png)
-
-#### Run the application
-1. Click the Run/Debug configurations dropdown and select 'Cloud Run: Run Locally'. Click the run icon.  
-![image](./img/config-run-locally.png)
-
-2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services.  
-![image](./img/local-success.png)
-
----
-## Sign up for User Research
-
-We want to hear your feedback!
-
-The Cloud Code team is inviting our user community to sign-up to participate in Google User Experience Research. 
-
-If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
-
-[Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.
