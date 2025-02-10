@@ -1,6 +1,6 @@
 # Toy Store Search App
 
-## 1. Set up AlloyDB Database
+## Set up AlloyDB Database
 Follow steps in step 4 in this codelab: https://codelabs.developers.google.com/smart-shop-agent-alloydb#3
 Remember to name the cluster and instance as follows:
 cluster: vector-cluster
@@ -71,6 +71,9 @@ Toolbox sits between your application's orchestration framework and your databas
 https://github.com/googleapis/genai-toolbox
 [Toolbo](https://pypi.org/project/toolbox-langchain/0.1.0/)
 https://github.com/googleapis/genai-toolbox-langchain-python
+
+### tools.yaml 
+This file (in this repo inside the toolbox folder) contains the tool implementation for this project to predict the price of the custom created toy by employing the Vector Search matches approach.
 
 
 ---
