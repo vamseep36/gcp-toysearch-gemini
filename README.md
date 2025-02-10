@@ -84,6 +84,13 @@ https://github.com/googleapis/genai-toolbox-langchain-python
 This file (in this repo inside the toolbox folder) contains the tool implementation for this project to predict the price of the custom created toy by employing the Vector Search matches approach.
 
 
+At the time of implementation, change the toolbox query to:
+select avg(price) from (
+  SELECT price FROM toys
+      ORDER BY text_embeddings <=> CAST(embedding('text-embedding-005', 'elephant toys') AS vector(768))
+      LIMIT 5
+) as price  
+
 ---
 ## Serverless Deployment
 gcloud run deploy --source .
