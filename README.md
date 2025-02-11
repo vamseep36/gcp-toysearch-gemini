@@ -102,7 +102,9 @@ Toolbox sits between your application's orchestration framework and your databas
 ### Toolbox installation and details:
 
 https://github.com/googleapis/genai-toolbox
-[Toolbo](https://pypi.org/project/toolbox-langchain/0.1.0/)
+
+https://pypi.org/project/toolbox-langchain/0.1.0/
+
 https://github.com/googleapis/genai-toolbox-langchain-python
 
 ### tools.yaml 
