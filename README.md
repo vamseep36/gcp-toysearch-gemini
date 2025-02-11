@@ -1,6 +1,18 @@
 # Toy Store Search App
 
 ## Set up AlloyDB Database
+AlloyDB is more than 4x faster for transactional workloads and provides up to 2x better price-performance compared to self-managed PostgreSQL.
+
+It uses the Google ScaNN index, the technology that powers services like Google Search and YouTube, to scale to over a billion vectors and deliver up to 4 times faster vector queries than the HNSW index in standard PostgreSQL.
+
+It also helps you generate vector embeddings from within your database.
+
+AlloyDB Omni is a downloadable edition of AlloyDB, designed to run anywhere—in your data center, on your laptop, at the edge, and in any cloud. It’s powered by the same engine that underlies the cloud-based AlloyDB service and provides the same functionality. AlloyDB Omni is a fraction of the cost of legacy databases, so it’s an attractive way to modernize to an enterprise-grade version of PostgreSQL with support from a Tier 1 vendor.
+
+
+### AlloyDB
+100% PostgreSQL-compatible database that runs anywherev
+
 Follow steps in step 4 in this codelab: https://codelabs.developers.google.com/smart-shop-agent-alloydb#3
 Remember to name the cluster and instance as follows:
 cluster: vector-cluster
