@@ -117,6 +117,23 @@ select avg(price) from (
 ) as price  
 
 ---
+
+## Build and Deploy
+From your Cloud Shell Terminal, run the following commands:
+
+  git clone https://github.com/AbiramiSukumaran/toysearch
+  cd toysearch
+
+  export PROJECT_ID YOUR_PROJECT_ID
+  export GOOGLE_API_KEY YOUR_KEY
+
+  mvn package
+  mvn spring-boot:run
+  
+You should be able to run your app in your local cloud shell machine. 
+
 ## Serverless Deployment
 gcloud run deploy --source .
+
+Provide the necessary details as prompted and you should be able to get the app deployed serverlessly on Cloud Run.
 
