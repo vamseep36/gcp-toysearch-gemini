@@ -124,6 +124,9 @@ select avg(price) from (
 From your Cloud Shell Terminal, run the following commands:
 
   git clone https://github.com/AbiramiSukumaran/toysearch
+
+Make sure to create the 2 Cloud Run Functions we are using in this project. The source code for those 2 are available in the folders get-toys-alloydb and toolbox-toys respectively. Once you create the Cloud Run Functions, delete these folders from your web app folder structure. 
+
   
   cd toysearch
   
