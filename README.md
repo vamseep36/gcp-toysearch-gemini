@@ -140,17 +140,17 @@ From your Cloud Shell Terminal, run the following commands:
 Make sure to create the 2 Cloud Run Functions we are using in this project. The source code for those 2 are available in the folders get-toys-alloydb and toolbox-toys respectively. Once you create the Cloud Run Functions, delete these folders from your web app folder structure. 
 
   
-  cd toysearch
+  #### cd toysearch
   
 
-  export PROJECT_ID YOUR_PROJECT_ID
+  #### export PROJECT_ID YOUR_PROJECT_ID
   
-  export GOOGLE_API_KEY YOUR_KEY
+  #### export GOOGLE_API_KEY YOUR_KEY
   
 
-  mvn package
+  #### mvn package
   
-  mvn spring-boot:run
+  #### mvn spring-boot:run
   
   
 You should be able to run your app in your local cloud shell machine. 
