@@ -20,37 +20,45 @@ instances: vector-instance
 change the user, password, db_name in your Cloud Run Function application code (in the "get-toys-alloydb" Cloud Run Function) according to what you set in this setup step.
 
 ### 1. CREATE Script
-CREATE TABLE toys ( id VARCHAR(25), name VARCHAR(25), description VARCHAR(20000), quantity INT, price FLOAT, image_url VARCHAR(200), text_embeddings vector(768)) ;
+
+#### CREATE TABLE toys ( id VARCHAR(25), name VARCHAR(25), description VARCHAR(20000), quantity INT, price FLOAT, image_url VARCHAR(200), text_embeddings vector(768)) ;
+
 
 ### 2. INSERT Script
 INSERT SCRIPTS in the file data.sql in this repo
 
 ### 3. Enable Extensions
-CREATE EXTENSION vector;
-CREATE EXTENSION google_ml_integration;
+
+#### CREATE EXTENSION vector;
+
+#### CREATE EXTENSION google_ml_integration;
+
 
 ### 4. Grant Permission
-GRANT EXECUTE ON FUNCTION embedding TO postgres;
+
+#### GRANT EXECUTE ON FUNCTION embedding TO postgres;
+
 
 ### 5. Grant Vertex AI User ROLE to the AlloyDB service account
 
-PROJECT_ID=$(gcloud config get-value project)
+#### PROJECT_ID=$(gcloud config get-value project)
 
 gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member="serviceAccount:service-$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")@gcp-sa-alloydb.iam.gserviceaccount.com" \
 --role="roles/aiplatform.user"
 
 ### 6. Update Text Embeddings
-UPDATE toys set text_embeddings = embedding( 'text-embedding-005', description);
+
+#### UPDATE toys set text_embeddings = embedding( 'text-embedding-005', description);
 
 ### 7. Vector Search (RAG)
 
 At this point you are ready to test your Nearest Neighbor query results using the embeddings just created from AlloyDB Studio.
 For detailed steps on how to create ScaNN index, refer to this blog: 
 
-    select * from toys
-    ORDER BY text_embeddings <=> CAST(embedding('text-embedding-005', 'white plush teddy bear toy with floral pattern') as vector(768))
-    LIMIT 5;
+####    select * from toys
+####    ORDER BY text_embeddings <=> CAST(embedding('text-embedding-005', 'white plush teddy bear toy with floral pattern') as vector(768))
+####    LIMIT 5;
 
 ### 7. ScaNN Index
 
@@ -67,13 +75,13 @@ The ScaNN index is a tree-based quantization index for approximate nearest neigh
 
    Refer to this blog for creating ScaNN index and executing Vector Search on indexed data: https://medium.com/google-cloud/upgrade-your-vector-search-efficiency-and-recall-with-scann-index-9bc8b2018377
 
-#### Install Extension:
-CREATE EXTENSION IF NOT EXISTS alloydb_scann;
+### Install Extension:
+#### CREATE EXTENSION IF NOT EXISTS alloydb_scann;
 
-#### Create Index (ScaNN):
-CREATE INDEX toysearch_index ON toys
-USING scann (text_embeddings cosine)
-WITH (num_leaves=9); 
+### Create Index (ScaNN):
+#### CREATE INDEX toysearch_index ON toys
+#### USING scann (text_embeddings cosine)
+#### WITH (num_leaves=9); 
 
 ## Search Similar Toys: Gemini 2.0 for image based Vector Search
 In this step, the app takes the user input (text / image) and asks Gemini for description to the level of detail that is comparable with the context in the toy descriptions  we have in the database. Then we match the embeddings and fetch the nearest neighbors.
@@ -156,8 +164,8 @@ Make sure to create the 2 Cloud Run Functions we are using in this project. The 
 You should be able to run your app in your local cloud shell machine. 
 
 ## Serverless Deployment
-gcloud run deploy --source .
 
+#### gcloud run deploy --source .
 
 Provide the necessary details as prompted and you should be able to get the app deployed serverlessly on Cloud Run.
 
