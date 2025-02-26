@@ -1,4 +1,11 @@
 insert into toys(id, name, description, quantity, price, image_url) values(1,'car_1','Orange vintage-style toy pickup truck',25,49.99,'https://storage.googleapis.com/img_public_test/toys/car_1.png');
+insert into toys(id, name, description, quantity, price, image_url) values(13,'image (12)','Beige knitted toy rabbit with red accents',90,11.99,'https://storage.googleapis.com/img_public_test/toys/image (12).png');
+insert into toys(id, name, description, quantity, price, image_url) values(21,'image (20)','Yellow plush toy bear with a plain yellow bow',75,15.99,'https://storage.googleapis.com/img_public_test/toys/image (20).png');
+insert into toys(id, name, description, quantity, price, image_url) values(61,'image (60)','Pink toy of the Pink Panther with yellow eyes and black whiskers.',60,49.99,'https://storage.googleapis.com/img_public_test/toys/image (60).png');
+insert into toys(id, name, description, quantity, price, image_url) values(41,'image (40)','Barbie doll with long blonde hair wearing a pink tube dress and small golden earrings.',50,24.99,'https://storage.googleapis.com/img_public_test/toys/image (40).png');
+
+
+
 insert into toys(id, name, description, quantity, price, image_url) values(2,'car_2','Red vintage-style toy pickup truck with racing number 17',20,49.99,'https://storage.googleapis.com/img_public_test/toys/car_2.png');
 insert into toys(id, name, description, quantity, price, image_url) values(3,'car_3','Orange off-road style toy truck with side racing stripe',22,59.99,'https://storage.googleapis.com/img_public_test/toys/car_3.png');
 insert into toys(id, name, description, quantity, price, image_url) values(4,'car_4','Silver vintage-style toy pickup truck',28,48.99,'https://storage.googleapis.com/img_public_test/toys/car_4.png');
@@ -10,7 +17,6 @@ insert into toys(id, name, description, quantity, price, image_url) values(9,'im
 insert into toys(id, name, description, quantity, price, image_url) values(10,'image (9)','Brown knitted toy rabbit with a small friend',75,15.99,'https://storage.googleapis.com/img_public_test/toys/image (9).png');
 insert into toys(id, name, description, quantity, price, image_url) values(11,'image (10)','Beige knitted toy bear with a red Christmas hat and green scarf',80,13.99,'https://storage.googleapis.com/img_public_test/toys/image (10).png');
 insert into toys(id, name, description, quantity, price, image_url) values(12,'image (11)','White plush toy bear',85,15.99,'https://storage.googleapis.com/img_public_test/toys/image (11).png');
-insert into toys(id, name, description, quantity, price, image_url) values(13,'image (12)','Beige knitted toy rabbit with red accents',90,11.99,'https://storage.googleapis.com/img_public_test/toys/image (12).png');
 insert into toys(id, name, description, quantity, price, image_url) values(14,'image (13)','Beige toy rabbit with a red neck ribbon',95,13.99,'https://storage.googleapis.com/img_public_test/toys/image (13).png');
 insert into toys(id, name, description, quantity, price, image_url) values(15,'image (14)','Red plush toy bear with a polka dot bow',80,16.99,'https://storage.googleapis.com/img_public_test/toys/image (14).png');
 insert into toys(id, name, description, quantity, price, image_url) values(16,'image (15)','Red plush toy bear with a plain red bow',70,16.99,'https://storage.googleapis.com/img_public_test/toys/image (15).png');
@@ -18,7 +24,6 @@ insert into toys(id, name, description, quantity, price, image_url) values(17,'i
 insert into toys(id, name, description, quantity, price, image_url) values(18,'image (17)','Red plush toy bear with a plain red bow',60,16.99,'https://storage.googleapis.com/img_public_test/toys/image (17).png');
 insert into toys(id, name, description, quantity, price, image_url) values(19,'image (18)','Yellow plush toy bear with a polka dot bow',65,15.99,'https://storage.googleapis.com/img_public_test/toys/image (18).png');
 insert into toys(id, name, description, quantity, price, image_url) values(20,'image (19)','Yellow plush toy bear with a plain yellow bow',70,15.99,'https://storage.googleapis.com/img_public_test/toys/image (19).png');
-insert into toys(id, name, description, quantity, price, image_url) values(21,'image (20)','Yellow plush toy bear with a plain yellow bow',75,15.99,'https://storage.googleapis.com/img_public_test/toys/image (20).png');
 insert into toys(id, name, description, quantity, price, image_url) values(22,'image (21)','Yellow plush toy bear with a tuft of hair',75,15.99,'https://storage.googleapis.com/img_public_test/toys/image (21).png');
 insert into toys(id, name, description, quantity, price, image_url) values(23,'image (22)','White and tan plush dog toy',65,14.99,'https://storage.googleapis.com/img_public_test/toys/image (22).png');
 insert into toys(id, name, description, quantity, price, image_url) values(24,'image (23)','White plush dog toy with floppy ears',100,14.99,'https://storage.googleapis.com/img_public_test/toys/image (23).png');
@@ -38,7 +43,6 @@ insert into toys(id, name, description, quantity, price, image_url) values(37,'i
 insert into toys(id, name, description, quantity, price, image_url) values(38,'image (37)','A blue plastic toy fish with a black and white eye.',50,8.99,'https://storage.googleapis.com/img_public_test/toys/image (37).png');
 insert into toys(id, name, description, quantity, price, image_url) values(39,'image (38)','A blue plastic toy fish with yellow fins and a white eye.',100,29.99,'https://storage.googleapis.com/img_public_test/toys/image (38).png');
 insert into toys(id, name, description, quantity, price, image_url) values(40,'image (39)','Barbie doll with long blonde hair wearing a pink off-shoulder lace dress, tiara and earrings.',120,24.99,'https://storage.googleapis.com/img_public_test/toys/image (39).png');
-insert into toys(id, name, description, quantity, price, image_url) values(41,'image (40)','Barbie doll with long blonde hair wearing a pink tube dress and small golden earrings.',50,24.99,'https://storage.googleapis.com/img_public_test/toys/image (40).png');
 insert into toys(id, name, description, quantity, price, image_url) values(42,'image (41)','Barbie doll with long blonde hair wearing a yellow jacket and small golden earrings.',50,24.99,'https://storage.googleapis.com/img_public_test/toys/image (41).png');
 insert into toys(id, name, description, quantity, price, image_url) values(43,'image (42)','Barbie doll with long blonde hair wearing a yellow turtle neck top and yellow earrings.',120,29.99,'https://storage.googleapis.com/img_public_test/toys/image (42).png');
 insert into toys(id, name, description, quantity, price, image_url) values(44,'image (43)','Barbie doll with long blonde hair wearing a yellow shirt with a barbie logo on it.',100,29.99,'https://storage.googleapis.com/img_public_test/toys/image (43).png');
@@ -58,7 +62,6 @@ insert into toys(id, name, description, quantity, price, image_url) values(57,'i
 insert into toys(id, name, description, quantity, price, image_url) values(58,'image (57)','Large white teddy bear with a brown checkered bowtie.',100,59.99,'https://storage.googleapis.com/img_public_test/toys/image (57).png');
 insert into toys(id, name, description, quantity, price, image_url) values(59,'image (58)','Pink toy of the Pink Panther with yellow eyes and black whiskers.',100,49.99,'https://storage.googleapis.com/img_public_test/toys/image (58).png');
 insert into toys(id, name, description, quantity, price, image_url) values(60,'image (59)','Pink toy of the Pink Panther with yellow eyes and black whiskers.',60,49.99,'https://storage.googleapis.com/img_public_test/toys/image (59).png');
-insert into toys(id, name, description, quantity, price, image_url) values(61,'image (60)','Pink toy of the Pink Panther with yellow eyes and black whiskers.',60,49.99,'https://storage.googleapis.com/img_public_test/toys/image (60).png');
 insert into toys(id, name, description, quantity, price, image_url) values(62,'image (61)','Pink toy of the Pink Panther with yellow eyes and black whiskers.',60,49.99,'https://storage.googleapis.com/img_public_test/toys/image (61).png');
 insert into toys(id, name, description, quantity, price, image_url) values(63,'image (62)','Pink toy of the Pink Panther with yellow eyes and black whiskers.',60,49.99,'https://storage.googleapis.com/img_public_test/toys/image (62).png');
 insert into toys(id, name, description, quantity, price, image_url) values(64,'image (63)','Red and white toy Easy Bake oven with a small animal inside.',60,12.99,'https://storage.googleapis.com/img_public_test/toys/image (63).png');
