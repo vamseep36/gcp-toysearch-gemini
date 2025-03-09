@@ -8,9 +8,9 @@ In this Lab we are using PostgreSQL-compatible database. It is used to hold the 
 ### Cloud Functions (Cloud Run Gen2)
 We are using cloud run functions. They are two services.
 
-1. get-toys-alloydb
-2. toolbox-toys
-   
+1. get-toys-alloydb - It is microservice used to communicate with alloydb cluster.
+2. toolbox-toys - It is the microservice used to fetch the prices of the relevant toys.
+
 # Instructions to deploy
 Create a cluster and instance
 Navigate the AlloyDB page in the Cloud Console. Click on CREATE CLUSTER from that page:
