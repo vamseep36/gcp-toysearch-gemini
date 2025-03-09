@@ -33,12 +33,13 @@ Select SET UP CONNECTION.
 
 <img src="https://codelabs.developers.google.com/static/toy-store-app/img/7939bbb6802a91bf_1920.png"/>
 
-Select "Use an automatically allocated IP range" and Continue. After reviewing the information, select # CREATE CONNECTION.
+Select "<b>Use an automatically allocated IP range</b>" and Continue. After reviewing the information, select <b>CREATE CONNECTION</b>.
 
 <img src="https://codelabs.developers.google.com/static/toy-store-app/img/768ff5210e79676f_1920.png"/>
 
-Once your network is set up, you can continue to create your cluster. Click CREATE CLUSTER to complete setting up of the cluster.
-Note that the Cluster creation will take around 10 minutes. Once it is successful, you should see a screen that shows the overview of your cluster you just created.
+Once your network is set up, you can continue to create your cluster. 
+Click <b>CREATE CLUSTER</b> to complete setting up of the cluster.
+Note: Cluster creation will take around 10 minutes. Once it is successful, you should see a screen that shows the overview of your cluster you just created.
 
 ### 1. CREATE Script
 
