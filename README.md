@@ -1,23 +1,44 @@
 # Toy Store Search App
 
-## Set up AlloyDB Database
-AlloyDB is more than 4x faster for transactional workloads and provides up to 2x better price-performance compared to self-managed PostgreSQL.
-
-It uses the Google ScaNN index, the technology that powers services like Google Search and YouTube, to scale to over a billion vectors and deliver up to 4 times faster vector queries than the HNSW index in standard PostgreSQL.
-
-It also helps you generate vector embeddings from within your database.
-
-AlloyDB Omni is a downloadable edition of AlloyDB, designed to run anywhere—in your data center, on your laptop, at the edge, and in any cloud. It’s powered by the same engine that underlies the cloud-based AlloyDB service and provides the same functionality. AlloyDB Omni is a fraction of the cost of legacy databases, so it’s an attractive way to modernize to an enterprise-grade version of PostgreSQL with support from a Tier 1 vendor.
-
+# Architecture
 
 ### AlloyDB
-100% PostgreSQL-compatible database that runs anywherev
+In this Lab we are using PostgreSQL-compatible database. It is used to hold the toystore data.
 
-Follow steps in step 4 in this codelab: https://codelabs.developers.google.com/smart-shop-agent-alloydb#3
-Remember to name the cluster and instance as follows:
-cluster: vector-cluster
-instances: vector-instance
-change the user, password, db_name in your Cloud Run Function application code (in the "get-toys-alloydb" Cloud Run Function) according to what you set in this setup step.
+### Cloud Functions (Cloud Run Gen2)
+We are using cloud run functions. They are two services.
+
+1. get-toys-alloydb
+2. toolbox-toys
+   
+# Instructions to deploy
+Create a cluster and instance
+Navigate the AlloyDB page in the Cloud Console. Click on CREATE CLUSTER from that page:
+<img src="https://codelabs.developers.google.com/static/toy-store-app/img/f76ff480c8c889aa_1920.png"/>
+
+You'll see a screen like the one below. Create a cluster and instance with the following values (Make sure the values match in case you are cloning the application code from the repo):
+```
+cluster id: vector-cluster
+password: alloydb
+PostgreSQL 15 compatible
+Region: us-central1
+Networking: default
+instance id: vector-instance
+```
+
+<img src="https://codelabs.developers.google.com/static/toy-store-app/img/538dba58908162fb_1920.png"/>
+
+When you select the default network, you'll see a screen like the one below.
+Select SET UP CONNECTION.
+
+<img src="https://codelabs.developers.google.com/static/toy-store-app/img/7939bbb6802a91bf_1920.png"/>
+
+Select "Use an automatically allocated IP range" and Continue. After reviewing the information, select # CREATE CONNECTION.
+
+<img src="https://codelabs.developers.google.com/static/toy-store-app/img/768ff5210e79676f_1920.png"/>
+
+Once your network is set up, you can continue to create your cluster. Click CREATE CLUSTER to complete setting up of the cluster.
+Note that the Cluster creation will take around 10 minutes. Once it is successful, you should see a screen that shows the overview of your cluster you just created.
 
 ### 1. CREATE Script
 
@@ -139,6 +160,9 @@ select avg(price) from (
 ) as price  
 
 ---
+
+change the user, password, db_name in your Cloud Run Function application code (in the "get-toys-alloydb" Cloud Run Function) according to what you set in this setup step.
+
 
 ## Build and Deploy
 From your Cloud Shell Terminal, run the following commands:
